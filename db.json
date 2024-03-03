@@ -1,0 +1,39 @@
+{
+  "characters": [
+    {
+      "id": "2",
+      "name": "Elizabeth Bennet",
+      "age": "19",
+      "iconicLines": "You are too hasty, sir.",
+      "creator": "Jane Austen"
+    },
+    {
+      "id": "3",
+      "name": "Sherlock Holmes",
+      "age": 34,
+      "iconicLines": "Elementary, my dear Watson.",
+      "creator": "Arthur Conan Doyle"
+    },
+    {
+      "id": "4",
+      "name": "Hermione Granger",
+      "age": 11,
+      "iconicLines": "It's LeviOsa, not LevioSA.",
+      "creator": "J.K. Rowling"
+    },
+    {
+      "id": "5",
+      "name": "Harry Potter",
+      "age": 11,
+      "iconicLines": "I'm a what?",
+      "creator": "J.K. Rowling"
+    },
+    {
+      "id": "6",
+      "name": "Darcy",
+      "age": "27",
+      "iconicLines": "In vain have I struggled. It will not do. My feelings will not be repressed. You must allow me to tell you how ardently I admire and love you.",
+      "creator": "Jane Austen"
+    }
+  ]
+}
