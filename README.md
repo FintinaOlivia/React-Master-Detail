@@ -14,5 +14,5 @@ In order to be able to run this:
 > npm start
 
 Setting up JSON Server:
-> npm install -g json-server
+> npm install -g json-server </br>
 > npx json-server db.json --port 3005
