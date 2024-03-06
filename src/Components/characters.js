@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Link, Routes, Route, useNavigate, useLocation} from "react-router-dom";
+import { Link, Routes, Route, useNavigate, useLocation, useParams } from "react-router-dom";
 
 export function Characters() {
   const [content, setContent] = useState(<CharacterList displayForm={displayForm} />);
@@ -14,7 +14,7 @@ export function Characters() {
   function displayForm(character) {
     // Redirect to the add character page
     if (character){
-        navigate(`/characters/${character.id}`, { state: { character } });
+        navigate(`/characters/edit/${character.id}`, { state: { character } });
     }else{
         navigate('/characters/add', { state: { character } });
     }
@@ -26,13 +26,42 @@ export function Characters() {
       <Routes>
         <Route path="/" element={content} />
         <Route path="/add" element={<CharacterForm displayList={displayList} />} />
-        <Route path="/:id" element={<CharacterForm displayList={displayList} />} /> 
+        <Route path="/edit/:id" element={<CharacterForm displayList={displayList} />} /> 
+        <Route path="/:id" element={<CharacterDetails />} />
         <Route path="*">Not Found</Route>
-        {/* <Route path="/characters/:id" element={<EditCharacterForm  />} /> */}   
       </Routes>
     </div>
   );
 }
+
+function CharacterDetails({ match }) {
+    const [character, setCharacter] = useState(null);
+    const { id } = useParams();
+  
+    useEffect(() => {
+      fetch(`http://localhost:3005/characters/${id}`)
+        .then((response) => response.json())
+        .then((data) => setCharacter(data))
+        .catch((error) => console.log(error));
+    }, [id]);
+  
+    if (!character) {
+      return <div>Loading...</div>;
+    }
+  
+    return (
+      <div>
+        <h2>Character Details</h2>
+        <p>ID: {character.id}</p>
+        <p>Name: {character.name}</p>
+        <p>Age: {character.age}</p>
+        <p>Iconic Lines: {character.iconicLines}</p>
+        <p>Creator: {character.creator}</p>
+        <p>Description: {character.description}</p>
+      </div>
+    );
+  }
+  
 
 export function CharacterList(props){
     const [content, setContent] = useState([]);
@@ -50,6 +79,7 @@ export function CharacterList(props){
         })
         .catch(error => console.log(error));
     }
+
 
     useEffect(() => fetchCharacters(), []);
 
@@ -94,17 +124,22 @@ export function CharacterList(props){
                 </thead>
                 <tbody>
                     {content.map((character, index) => (
-                        <tr key={index}>
-                            <td>{character.id}</td>
-                            <td>{character.name}</td>
-                            <td>{character.age}</td>
-                            <td>{character.iconicLines}</td>
-                            <td>{character.creator}</td>
-                            <td style={{width: "3px", whiteSpace: "nowrap"}}>
-                                <button onClick={() => props.displayForm(character)} className="btn btn-primary btn-sm me-2">Edit</button>
-                                <button onClick={() => deleteCharacter(character.id)} type="button" className="btn btn-danger btn-sm">Delete</button>
-                            </td>
-                        </tr>
+                        // <Link key={index} to={`/characters/${character.id}`}>
+                            <tr>
+                                <td>{character.id}</td>
+                                {/* <td>{character.name}</td> */}
+                                <td>
+                                    <Link to={`/characters/${character.id}`}>{character.name}</Link>
+                                </td>
+                                <td>{character.age}</td>
+                                <td>{character.iconicLines}</td>
+                                <td>{character.creator}</td>
+                                <td style={{width: "3px", whiteSpace: "nowrap"}}>
+                                    <button onClick={() => props.displayForm(character)} className="btn btn-primary btn-sm me-2">Edit</button>
+                                    <button onClick={() => deleteCharacter(character.id)} type="button" className="btn btn-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                        // </Link>
                     ))}
                 </tbody>
             </table>
@@ -117,12 +152,8 @@ export function CharacterForm(props){
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
-    const [formData, setFormData] = useState({
-        name: "",
-        age: "",
-        iconicLines: "",
-        creator: ""      
-    });
+    const [formData, setFormData] = useState({});
+    console.log(formData);
 
     const { state } = useLocation();
     const character = state && state.character;
@@ -294,6 +325,19 @@ export function CharacterForm(props){
                                     type="text" className="form-control" name="creator" 
                                     placeholder={character ? character.creator : "Enter creator...."}
                                     defaultValue={character ? character.creator : ""}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="mb-3">
+                            <label className="col-sm-4 col-form-label">Description</label>
+                            <div className="mb-3">
+                                <textarea 
+                                    style={{height: "120px"}}
+                                    type="text" className="form-control" name="iconicLines" 
+                                    placeholder={character ? character.description : "Enter description...."}
+                                    defaultValue={character ? character.description : " "}
                                     onChange={handleChange}
                                 />
                             </div>
