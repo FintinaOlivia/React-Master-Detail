@@ -5,35 +5,40 @@
       "name": "Elizabeth Bennet",
       "age": "19",
       "iconicLines": "You are too hasty, sir.",
-      "creator": "Jane Austen"
+      "creator": "Jane Austen",
+      "description": "Elizabeth Bennet is the protagonist in Jane Austen's novel Pride and Prejudice. She is portrayed as intelligent, independent, and witty."
     },
     {
       "id": "3",
       "name": "Sherlock Holmes",
       "age": 34,
       "iconicLines": "Elementary, my dear Watson.",
-      "creator": "Arthur Conan Doyle"
+      "creator": "Arthur Conan Doyle",
+      "description": "Sherlock Holmes is a fictional detective created by Sir Arthur Conan Doyle. He is known for his logical reasoning, deductive skills, and iconic deerstalker hat."
     },
     {
       "id": "4",
       "name": "Hermione Granger",
       "age": 11,
       "iconicLines": "It's LeviOsa, not LevioSA.",
-      "creator": "J.K. Rowling"
+      "creator": "J.K. Rowling",
+      "description": "Hermione Granger is a character in the Harry Potter series by J.K. Rowling. She is known for her intelligence, bravery, and loyalty to her friends."
     },
     {
       "id": "5",
       "name": "Harry Potter",
       "age": 11,
       "iconicLines": "I'm a what?",
-      "creator": "J.K. Rowling"
+      "creator": "J.K. Rowling",
+      "description": "Harry Potter is the main character in the Harry Potter series by J.K. Rowling. He is a wizard who survived an attack by the dark wizard Voldemort as a baby."
     },
     {
       "id": "6",
       "name": "Darcy",
       "age": "27",
       "iconicLines": "In vain have I struggled. It will not do. My feelings will not be repressed. You must allow me to tell you how ardently I admire and love you.",
-      "creator": "Jane Austen"
+      "creator": "Jane Austen",
+      "description": "Mr. Fitzwilliam Darcy is a character in Jane Austen's novel Pride and Prejudice. He is initially perceived as proud and arrogant but later reveals himself to be honorable and deeply in love with Elizabeth Bennet."
     }
   ]
 }
