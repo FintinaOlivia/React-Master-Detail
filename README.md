@@ -12,6 +12,7 @@ JSON Server allows simulating REST API operations/actions with a quick, easy set
 Getting the show on the road:
 > git clone</br>
 > cd React-Master-Detail </br>
+> npm install
 > npm start
 
 Setting up JSON Server:
