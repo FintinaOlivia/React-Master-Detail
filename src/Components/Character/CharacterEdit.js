@@ -87,7 +87,7 @@ export function CharacterEdit(props) {
   };
 
   return (
-    <>
+    <div className="container flex justify-content-center align-items-center vh-100">
       <h2 className="text-center mb-3">Edit Character</h2>
       <Link to="/characters" className="btn btn-secondary">
         Cancel
@@ -178,6 +178,6 @@ export function CharacterEdit(props) {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }

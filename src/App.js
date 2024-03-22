@@ -8,28 +8,14 @@ import {Home} from './LandingPage/homepage';
 import {CharacterDetails, Characters} from './Components/Character/Characters';
 import {CharacterForm} from './Components/Character/CharacterForm';
 import {CharacterEdit} from './Components/Character/CharacterEdit';
-
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {ChartPage} from './Components/Chart/Chart';
 import CssBaseline from '@mui/material/CssBaseline';
 
-const theme = createTheme({
-  palette: {
-      primary: {
-          main: '#ff5722', // Orange accent color
-      },
-      }
-      // background: {
-      //     default: '#00838f', // Navy blue background color
-      // },
-      // text: {
-      //     primary: '#ffffff', // White font color
-      // },
-  },
-);
+
 
 export function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <CssBaseline />
         <Router>
           <Navbar />
@@ -39,9 +25,10 @@ export function App() {
           <Route path="/characters/:id" element={<CharacterDetails />} />
           <Route path="/characters/add" element={<CharacterForm />} />
           <Route path="/characters/edit/:id" element={<CharacterEdit />} />
+          <Route path="/characters/chart" element={<ChartPage />} />
         </Routes>
           <Footer />
         </Router>
-    </ThemeProvider>
+      </>
   );
 }

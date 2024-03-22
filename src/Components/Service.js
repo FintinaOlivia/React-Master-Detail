@@ -1,15 +1,14 @@
-export function fetchCharacters() {
-    return fetch("http://localhost:3005/characters")
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Something went wrong! >:(");
-            }
-            return response.json();
-        })
-        .catch(error => {
-            console.log(error);
-            return [];
-        });
+export async function fetchCharacters() {
+    try {
+        const response = await fetch("http://localhost:3005/characters");
+        if (!response.ok) {
+            throw new Error("Something went wrong! >:(");
+        }
+        return await response.json();
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
 }
 
 export function fetchCharacter(id) {

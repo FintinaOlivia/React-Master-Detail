@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, useParams } from "react-router-dom";
+import { Routes, Route, useNavigate, useRoutes, useParams } from "react-router-dom";
 import { CharacterList } from './CharacterList';
 import { CharacterForm } from './CharacterForm';
 import { CharacterEdit } from './CharacterEdit';
+
+import {ChartPage} from '../Chart/Chart';
 
 export function Characters() {
     const [content, setContent] = useState(<CharacterList displayForm={displayForm} />);
@@ -21,7 +23,8 @@ export function Characters() {
       }
     }
   
-      
+  
+
     return (
       <div className="container my-5">
         <Routes>
@@ -29,7 +32,7 @@ export function Characters() {
           <Route path="/add" element={<CharacterForm displayList={displayList} />} />
           <Route path="/edit/:id" element={<CharacterEdit displayList={displayList} />} /> 
           <Route path="/:id" element={<CharacterDetails />} />
-          <Route path="*">Not Found</Route>
+          <Route path="*" element={<div>Not Found</div>} />
         </Routes>
       </div>
     );
@@ -62,3 +65,4 @@ export function CharacterDetails({ match }) {
       </div>
     );
   }
+
